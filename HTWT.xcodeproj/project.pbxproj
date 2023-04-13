@@ -14,6 +14,8 @@
 		790116EC29E5823000D9E772 /* HTWT.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 790116EA29E5823000D9E772 /* HTWT.xcdatamodeld */; };
 		790116EE29E5823000D9E772 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 790116ED29E5823000D9E772 /* Assets.xcassets */; };
 		790116F129E5823000D9E772 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 790116EF29E5823000D9E772 /* LaunchScreen.storyboard */; };
+		796757F529E83B4100F737F2 /* CurrentWeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796757F329E83B4100F737F2 /* CurrentWeatherCell.swift */; };
+		796757F629E83B4100F737F2 /* CurrentWeatherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 796757F429E83B4100F737F2 /* CurrentWeatherCell.xib */; };
 		EF7ED728DE6FEDF69E2F1B70 /* Pods_HTWT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6FB44D82578440F088E48A /* Pods_HTWT.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +30,8 @@
 		790116ED29E5823000D9E772 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		790116F029E5823000D9E772 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		790116F229E5823000D9E772 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		796757F329E83B4100F737F2 /* CurrentWeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherCell.swift; sourceTree = "<group>"; };
+		796757F429E83B4100F737F2 /* CurrentWeatherCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentWeatherCell.xib; sourceTree = "<group>"; };
 		8A4BD646133CF0E2B9FF331D /* Pods-HTWT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HTWT.release.xcconfig"; path = "Target Support Files/Pods-HTWT/Pods-HTWT.release.xcconfig"; sourceTree = "<group>"; };
 		9A6FB44D82578440F088E48A /* Pods_HTWT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HTWT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -73,9 +77,11 @@
 		790116E029E5823000D9E772 /* HTWT */ = {
 			isa = PBXGroup;
 			children = (
+				796757F229E83AEB00F737F2 /* Models */,
+				796757F129E83AE600F737F2 /* Views */,
+				796757F029E83ADE00F737F2 /* Controllers */,
 				790116E129E5823000D9E772 /* AppDelegate.swift */,
 				790116E329E5823000D9E772 /* SceneDelegate.swift */,
-				790116E529E5823000D9E772 /* ViewController.swift */,
 				790116E729E5823000D9E772 /* Main.storyboard */,
 				790116ED29E5823000D9E772 /* Assets.xcassets */,
 				790116EF29E5823000D9E772 /* LaunchScreen.storyboard */,
@@ -83,6 +89,30 @@
 				790116EA29E5823000D9E772 /* HTWT.xcdatamodeld */,
 			);
 			path = HTWT;
+			sourceTree = "<group>";
+		};
+		796757F029E83ADE00F737F2 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				790116E529E5823000D9E772 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		796757F129E83AE600F737F2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				796757F329E83B4100F737F2 /* CurrentWeatherCell.swift */,
+				796757F429E83B4100F737F2 /* CurrentWeatherCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		796757F229E83AEB00F737F2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		D8B7B1450E8949100E4D4CEF /* Pods */ = {
@@ -156,6 +186,7 @@
 			files = (
 				790116F129E5823000D9E772 /* LaunchScreen.storyboard in Resources */,
 				790116EE29E5823000D9E772 /* Assets.xcassets in Resources */,
+				796757F629E83B4100F737F2 /* CurrentWeatherCell.xib in Resources */,
 				790116E929E5823000D9E772 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -213,6 +244,7 @@
 				790116E629E5823000D9E772 /* ViewController.swift in Sources */,
 				790116E229E5823000D9E772 /* AppDelegate.swift in Sources */,
 				790116E429E5823000D9E772 /* SceneDelegate.swift in Sources */,
+				796757F529E83B4100F737F2 /* CurrentWeatherCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
