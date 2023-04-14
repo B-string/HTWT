@@ -14,6 +14,7 @@
 		790116EC29E5823000D9E772 /* HTWT.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 790116EA29E5823000D9E772 /* HTWT.xcdatamodeld */; };
 		790116EE29E5823000D9E772 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 790116ED29E5823000D9E772 /* Assets.xcassets */; };
 		790116F129E5823000D9E772 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 790116EF29E5823000D9E772 /* LaunchScreen.storyboard */; };
+		793419B329E98EC700FD4DA4 /* HTWTManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793419B229E98EC700FD4DA4 /* HTWTManager.swift */; };
 		796757F529E83B4100F737F2 /* CurrentWeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796757F329E83B4100F737F2 /* CurrentWeatherCell.swift */; };
 		796757F629E83B4100F737F2 /* CurrentWeatherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 796757F429E83B4100F737F2 /* CurrentWeatherCell.xib */; };
 		EF7ED728DE6FEDF69E2F1B70 /* Pods_HTWT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6FB44D82578440F088E48A /* Pods_HTWT.framework */; };
@@ -30,6 +31,7 @@
 		790116ED29E5823000D9E772 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		790116F029E5823000D9E772 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		790116F229E5823000D9E772 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		793419B229E98EC700FD4DA4 /* HTWTManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTWTManager.swift; sourceTree = "<group>"; };
 		796757F329E83B4100F737F2 /* CurrentWeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherCell.swift; sourceTree = "<group>"; };
 		796757F429E83B4100F737F2 /* CurrentWeatherCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentWeatherCell.xib; sourceTree = "<group>"; };
 		8A4BD646133CF0E2B9FF331D /* Pods-HTWT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HTWT.release.xcconfig"; path = "Target Support Files/Pods-HTWT/Pods-HTWT.release.xcconfig"; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 		796757F229E83AEB00F737F2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				793419B229E98EC700FD4DA4 /* HTWTManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				793419B329E98EC700FD4DA4 /* HTWTManager.swift in Sources */,
 				790116EC29E5823000D9E772 /* HTWT.xcdatamodeld in Sources */,
 				790116E629E5823000D9E772 /* ViewController.swift in Sources */,
 				790116E229E5823000D9E772 /* AppDelegate.swift in Sources */,

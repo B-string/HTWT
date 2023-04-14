@@ -31,6 +31,9 @@
                             <constraint firstItem="Vcr-Q7-NN9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="RIm-IE-Bah"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="Vcr-Q7-NN9" id="Fuc-HL-dmi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
