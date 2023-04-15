@@ -15,7 +15,15 @@ class CurrentWeatherCell: UITableViewCell {
     @IBOutlet weak var cTemperatureLabel: UILabel!
     @IBOutlet weak var hAndLTemperatureLabel: UILabel!
     
-
+    var forecastData: CurrentWeatherForecast? {
+        didSet {
+            guard let forecastData = forecastData else { return }
+            locationLabel.text = forecastData.name
+            cTemperatureLabel.text = "\(forecastData.main.temp)℃"
+            hAndLTemperatureLabel.text = "H : \(forecastData.main.tempMax)    L : \(forecastData.main.tempMin)"
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

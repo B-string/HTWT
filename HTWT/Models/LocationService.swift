@@ -1,37 +1,26 @@
 //
-//  ViewController.swift
+//  LocationService.swift
 //  HTWT
 //
-//  Created by Seokhyeon Jeong on 2023/04/11.
+//  Created by Seokhyeon Jeong on 2023/04/15.
 //
 
-import UIKit
+import Foundation
 import CoreLocation
 
-final class ViewController: UIViewController {
-
-    let weatherManager = HTWTManager.shared
-
-    private var locationManager = CLLocationManager()
-    var cWeatherForecast: CurrentWeatherForecast?
+class LocationService: NSObject {
     
-    @IBOutlet weak var tableView: UITableView!
+    static let shared = LocationService()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupTableView()
-        locationManager.delegate = self
+    private var locationManager: CLLocationManager?
+    
+    private var locationInformation: [String: Double] = [:]
+    
+    override init() {
+        super.init()
+        self.locationManager = CLLocationManager()
+        self.locationManager?.delegate = self
     }
-
-    // MARK: - setup
-    func setupTableView() {
-        tableView.dataSource = self
-        
-        tableView.register(UINib(nibName: "CurrentWeatherCell", bundle: nil),
-                           forCellReuseIdentifier: "CurrentWeatherCell")
-    }
-    
-  
     
     // MARK: - 위치 정보를 가져올 수 있는 권한을 확인
     func checkUserDeviceLocationServiceAuthorization(completion: @escaping () -> Void) {
@@ -45,7 +34,8 @@ final class ViewController: UIViewController {
         let authorizationStatus: CLAuthorizationStatus
         
         if #available(iOS 14.0, *) {
-            authorizationStatus = locationManager.authorizationStatus
+            guard let status = locationManager?.authorizationStatus else { return }
+            authorizationStatus = status
         } else {
             authorizationStatus = CLLocationManager.authorizationStatus()
         }
@@ -59,10 +49,10 @@ final class ViewController: UIViewController {
             // 사용자가 권한에 대한 설정을 선택하지 않은 상태
             
             // 권한 요청을 보내기 전에 desiredAccuracy 설정 필요
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager?.desiredAccuracy = kCLLocationAccuracyBest
             
             // 권한 요청을 보낸다.
-            locationManager.requestWhenInUseAuthorization()
+            locationManager?.requestWhenInUseAuthorization()
                 
         case .denied, .restricted:
             // 사용자가 명시적으로 권한을 거부했거나, 위치 서비스 활성화가 제한된 상태
@@ -78,43 +68,19 @@ final class ViewController: UIViewController {
             // requestLocation: 위치정보를 한번 가져온다.
             
 //            locationManager.startUpdatingLocation()
-            locationManager.requestLocation()
+            locationManager?.requestLocation()
             
         default:
             print("Default")
         }
     }
     
-}
-
-// MARK: - UITableViewDataSource
-extension ViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print(#function)
-        switch indexPath.row {
-        case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CurrentWeatherCell", for: indexPath) as! CurrentWeatherCell
-            cell.selectionStyle = .none
-            
-            tableView.rowHeight = 355
-            if let cWeatherForecast = self.cWeatherForecast {
-                cell.forecastData = cWeatherForecast
-            }
-            
-            return cell
-        default:
-            let cell = UITableViewCell()
-            return cell
-            
-        }
+    func getLocationInformation() -> [String: Double] {
+        return locationInformation
     }
 }
 
-extension ViewController: CLLocationManagerDelegate {
+extension LocationService: CLLocationManagerDelegate {
     // 사용자의 위치를 성공적으로 가져왔을 때 호출
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
@@ -122,12 +88,8 @@ extension ViewController: CLLocationManagerDelegate {
         if let coordinate = locations.last?.coordinate {
             // ⭐️ 사용자 위치 정보 사용
             print("lat : \(coordinate.latitude), long: \(coordinate.longitude)")
-            weatherManager.getWeatherForecast(
-                parameter: LocationInformation(lat: coordinate.latitude, lon: coordinate.longitude)) { [weak self] data in
-                    print(data)
-                    self?.cWeatherForecast = data
-                    self?.tableView.reloadData()
-            }
+            locationInformation["lat"] = coordinate.latitude
+            locationInformation["long"] = coordinate.longitude
         }
         
         // startUpdatingLocation()을 사용하여 사용자 위치를 가져왔다면
