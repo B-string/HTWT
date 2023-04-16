@@ -15,6 +15,7 @@ final class ViewController: UIViewController {
     private var locationManager = CLLocationManager()
     var cWeatherForecast: CurrentWeatherForecast?
     
+    // MARK: - UITableView
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -26,9 +27,11 @@ final class ViewController: UIViewController {
     // MARK: - setup
     func setupTableView() {
         tableView.dataSource = self
+//        tableView.separatorStyle = .none
         
         tableView.register(UINib(nibName: "CurrentWeatherCell", bundle: nil),
                            forCellReuseIdentifier: "CurrentWeatherCell")
+        tableView.register(FourDaysWeatherForecastCell.self, forCellReuseIdentifier: "FourDaysWeatherForecastCell")
     }
     
   
@@ -90,20 +93,26 @@ final class ViewController: UIViewController {
 // MARK: - UITableViewDataSource
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print(#function)
-        switch indexPath.row {
+        switch indexPath.section {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CurrentWeatherCell", for: indexPath) as! CurrentWeatherCell
+            print("CurrentWeatherCell")
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "CurrentWeatherCell", for: indexPath) as? CurrentWeatherCell else { return UITableViewCell() }
             cell.selectionStyle = .none
             
-            tableView.rowHeight = 355
             if let cWeatherForecast = self.cWeatherForecast {
                 cell.forecastData = cWeatherForecast
             }
+            
+            return cell
+        case 1:
+            print("FourDaysWeatherForecastCell")
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "FourDaysWeatherForecastCell", for: indexPath) as? FourDaysWeatherForecastCell else { return UITableViewCell() }
+            cell.selectionStyle = .none
             
             return cell
         default:
@@ -112,8 +121,16 @@ extension ViewController: UITableViewDataSource {
             
         }
     }
+    
+    
+    
 }
 
+extension ViewController: UITableViewDelegate {
+
+}
+
+// MARK: - CLLocationManagerDelegate
 extension ViewController: CLLocationManagerDelegate {
     // 사용자의 위치를 성공적으로 가져왔을 때 호출
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

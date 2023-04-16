@@ -7,6 +7,7 @@ target 'HTWT' do
   
   # Alamofire
   pod 'Alamofire', '~> 5.2'
+  pod 'SnapKit', '~> 5.6.0'
   # Pods for HTWT
 
 end
