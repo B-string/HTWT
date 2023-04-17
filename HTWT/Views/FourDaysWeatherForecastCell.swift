@@ -56,17 +56,22 @@ class FourDaysWeatherForecastCell: UITableViewCell {
     func setupCollectionView() {
         collectionView.dataSource = self
         
+        collectionView.register(UINib(nibName: "FDWeatherForecastCell", bundle: nil), forCellWithReuseIdentifier: "FDWeatherForecastCell")
+        
     }
     
 }
 
 extension FourDaysWeatherForecastCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return 10
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FDWeatherForecastCell", for: indexPath)
+        
+        return cell
     }
 }

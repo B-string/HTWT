@@ -27,8 +27,9 @@ final class ViewController: UIViewController {
     // MARK: - setup
     func setupTableView() {
         tableView.dataSource = self
+        tableView.delegate = self
 //        tableView.separatorStyle = .none
-        
+//        tableView.rowHeight = UITableView.automaticDimension
         tableView.register(UINib(nibName: "CurrentWeatherCell", bundle: nil),
                            forCellReuseIdentifier: "CurrentWeatherCell")
         tableView.register(FourDaysWeatherForecastCell.self, forCellReuseIdentifier: "FourDaysWeatherForecastCell")
@@ -98,7 +99,7 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print(#function)
-        switch indexPath.section {
+        switch indexPath.row {
         case 0:
             print("CurrentWeatherCell")
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "CurrentWeatherCell", for: indexPath) as? CurrentWeatherCell else { return UITableViewCell() }
@@ -128,6 +129,16 @@ extension ViewController: UITableViewDataSource {
 
 extension ViewController: UITableViewDelegate {
 
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.row {
+        case 0:
+            return 355
+        case 1:
+            return 120
+        default:
+            return 0
+        }
+    }
 }
 
 // MARK: - CLLocationManagerDelegate
