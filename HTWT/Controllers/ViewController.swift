@@ -33,6 +33,8 @@ final class ViewController: UIViewController {
         tableView.register(UINib(nibName: "CurrentWeatherCell", bundle: nil),
                            forCellReuseIdentifier: "CurrentWeatherCell")
         tableView.register(FourDaysWeatherForecastCell.self, forCellReuseIdentifier: "FourDaysWeatherForecastCell")
+        
+        tableView.register(TenDaysForecastCell.self, forCellReuseIdentifier: "TenDaysForecastCell")
     }
     
   
@@ -94,7 +96,7 @@ final class ViewController: UIViewController {
 // MARK: - UITableViewDataSource
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -113,6 +115,13 @@ extension ViewController: UITableViewDataSource {
         case 1:
             print("FourDaysWeatherForecastCell")
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "FourDaysWeatherForecastCell", for: indexPath) as? FourDaysWeatherForecastCell else { return UITableViewCell() }
+            cell.selectionStyle = .none
+            
+            return cell
+            
+        case 2:
+            print("TenDaysForecastCell")
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TenDaysForecastCell", for: indexPath) as? TenDaysForecastCell else { return UITableViewCell() }
             cell.selectionStyle = .none
             
             return cell
@@ -135,6 +144,8 @@ extension ViewController: UITableViewDelegate {
             return 355
         case 1:
             return 120
+        case 2:
+            return 400
         default:
             return 0
         }

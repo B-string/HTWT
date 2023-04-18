@@ -18,6 +18,7 @@
 		79175C3029ED856E004C0A74 /* FDWeatherForecastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79175C2E29ED856E004C0A74 /* FDWeatherForecastCell.swift */; };
 		79175C3129ED856E004C0A74 /* FDWeatherForecastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79175C2F29ED856E004C0A74 /* FDWeatherForecastCell.xib */; };
 		793419B329E98EC700FD4DA4 /* HTWTManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793419B229E98EC700FD4DA4 /* HTWTManager.swift */; };
+		7943FB3A29EEC448007DE7B5 /* TenDaysForecastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7943FB3929EEC448007DE7B5 /* TenDaysForecastCell.swift */; };
 		796757F529E83B4100F737F2 /* CurrentWeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796757F329E83B4100F737F2 /* CurrentWeatherCell.swift */; };
 		796757F629E83B4100F737F2 /* CurrentWeatherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 796757F429E83B4100F737F2 /* CurrentWeatherCell.xib */; };
 		797AFDB929EA712B008176B8 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797AFDB829EA712B008176B8 /* LocationService.swift */; };
@@ -40,6 +41,7 @@
 		79175C2E29ED856E004C0A74 /* FDWeatherForecastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDWeatherForecastCell.swift; sourceTree = "<group>"; };
 		79175C2F29ED856E004C0A74 /* FDWeatherForecastCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FDWeatherForecastCell.xib; sourceTree = "<group>"; };
 		793419B229E98EC700FD4DA4 /* HTWTManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTWTManager.swift; sourceTree = "<group>"; };
+		7943FB3929EEC448007DE7B5 /* TenDaysForecastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenDaysForecastCell.swift; sourceTree = "<group>"; };
 		796757F329E83B4100F737F2 /* CurrentWeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherCell.swift; sourceTree = "<group>"; };
 		796757F429E83B4100F737F2 /* CurrentWeatherCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentWeatherCell.xib; sourceTree = "<group>"; };
 		797AFDB829EA712B008176B8 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				79175C2A29EC0CF9004C0A74 /* FourDaysWeatherForecastCell.swift */,
 				79175C2E29ED856E004C0A74 /* FDWeatherForecastCell.swift */,
 				79175C2F29ED856E004C0A74 /* FDWeatherForecastCell.xib */,
+				7943FB3929EEC448007DE7B5 /* TenDaysForecastCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				793419B329E98EC700FD4DA4 /* HTWTManager.swift in Sources */,
 				790116EC29E5823000D9E772 /* HTWT.xcdatamodeld in Sources */,
 				790116E629E5823000D9E772 /* ViewController.swift in Sources */,
+				7943FB3A29EEC448007DE7B5 /* TenDaysForecastCell.swift in Sources */,
 				790116E229E5823000D9E772 /* AppDelegate.swift in Sources */,
 				790116E429E5823000D9E772 /* SceneDelegate.swift in Sources */,
 				79175C2B29EC0CF9004C0A74 /* FourDaysWeatherForecastCell.swift in Sources */,
