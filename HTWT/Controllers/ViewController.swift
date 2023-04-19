@@ -20,7 +20,9 @@ final class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Weather"
         setupTableView()
+//        setupNaviBar()
         locationManager.delegate = self
     }
 
@@ -35,6 +37,21 @@ final class ViewController: UIViewController {
         tableView.register(FourDaysWeatherForecastCell.self, forCellReuseIdentifier: "FourDaysWeatherForecastCell")
         
         tableView.register(TenDaysForecastCell.self, forCellReuseIdentifier: "TenDaysForecastCell")
+    }
+    
+    func setupNaviBar() {
+        title = "영화목록"
+        
+        // (네비게이션바 설정관련) iOS버전 업데이트 되면서 바뀐 설정⭐️⭐️⭐️
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()  // 불투명으로
+        appearance.backgroundColor = .white
+        navigationController?.navigationBar.tintColor = .systemBlue
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.compactAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        
+        navigationController?.navigationBar.prefersLargeTitles = true // 라지 타이틀 설정
     }
     
   
@@ -90,6 +107,8 @@ final class ViewController: UIViewController {
             print("Default")
         }
     }
+    
+    
     
 }
 
