@@ -22,6 +22,7 @@ final class ViewController: UIViewController {
         super.viewDidLoad()
         title = "Weather"
         setupTableView()
+        setupToolBar()
 //        setupNaviBar()
         locationManager.delegate = self
     }
@@ -39,20 +40,29 @@ final class ViewController: UIViewController {
         tableView.register(TenDaysForecastCell.self, forCellReuseIdentifier: "TenDaysForecastCell")
     }
     
-    func setupNaviBar() {
-        title = "영화목록"
+    func setupToolBar() {
+        let space = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: self, action: nil)
+        space.width = (view.bounds.width - 10) / 3
         
-        // (네비게이션바 설정관련) iOS버전 업데이트 되면서 바뀐 설정⭐️⭐️⭐️
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()  // 불투명으로
-        appearance.backgroundColor = .white
-        navigationController?.navigationBar.tintColor = .systemBlue
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.compactAppearance = appearance
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        let edgeSpace = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: self, action: nil)
+        edgeSpace.width = 5
         
-        navigationController?.navigationBar.prefersLargeTitles = true // 라지 타이틀 설정
+        let changeInfoImage = UIImage(systemName: "thermometer.medium")
+        let changeInfoItem = UIBarButtonItem(image: changeInfoImage, style: .plain, target: self, action: nil) // 날씨 정보 변경
+        
+        let weatherAlarmImage = UIImage(systemName: "alarm.waves.left.and.right")
+        let weatherAlarmItem = UIBarButtonItem(image: weatherAlarmImage, style: .plain, target: self, action: nil) // 특정 날씨 알림
+        
+        let addLocationImage = UIImage(systemName: "map")
+        let addLocationItem = UIBarButtonItem(image: addLocationImage, style: .plain, target: self, action: nil)
+        
+        toolbarItems = [edgeSpace, changeInfoItem, space, weatherAlarmItem, space, addLocationItem, edgeSpace]
+//        guard let items = toolbarItems else {
+//            return
+//        }
+        
     }
+    
     
   
     
