@@ -13,6 +13,8 @@ final class ViewController: UIViewController {
     let weatherManager = HTWTManager.shared
 
     private var locationManager = CLLocationManager()
+    private var locationService = LocationService()
+    
     var cWeatherForecast: CurrentWeatherForecast?
     
     // MARK: - UITableView
@@ -190,6 +192,11 @@ extension ViewController: CLLocationManagerDelegate {
         if let coordinate = locations.last?.coordinate {
             // ⭐️ 사용자 위치 정보 사용
             print("lat : \(coordinate.latitude), long: \(coordinate.longitude)")
+
+            locationService.setLocationInformation(lat: coordinate.latitude, lon: coordinate.longitude)
+            locationService.transformToGrid(mode: 0)
+            print("xlat: \(locationService.getGridXY("X")), ylon: \(locationService.getGridXY("Y"))")
+            
             weatherManager.getWeatherForecast(
                 parameter: LocationInformation(lat: coordinate.latitude, lon: coordinate.longitude)) { [weak self] data in
                     print(data)
