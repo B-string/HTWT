@@ -139,25 +139,9 @@
 		797AFDBA29EA8A35008176B8 /* Datas */ = {
 			isa = PBXGroup;
 			children = (
-				797CF4C229F16C9E005681FA /* OpenWeather */,
-				797CF4C129F16C7C005681FA /* KMA */,
-			);
-			path = Datas;
-			sourceTree = "<group>";
-		};
-		797CF4C129F16C7C005681FA /* KMA */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = KMA;
-			sourceTree = "<group>";
-		};
-		797CF4C229F16C9E005681FA /* OpenWeather */ = {
-			isa = PBXGroup;
-			children = (
 				797AFDBB29EA8A4C008176B8 /* CurrentWeatherForecast.swift */,
 			);
-			path = OpenWeather;
+			path = Datas;
 			sourceTree = "<group>";
 		};
 		D8B7B1450E8949100E4D4CEF /* Pods */ = {
