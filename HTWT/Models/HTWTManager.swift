@@ -12,16 +12,16 @@ class HTWTManager {
     
     static let shared = HTWTManager()
     
-    private let url = "https://api.openweathermap.org/data/2.5/weather"
+//    private let url = "https://api.openweathermap.org/data/2.5/weather"
     
-    func getWeatherForecast(parameter: LocationInformation, completion: @escaping (CurrentWeatherForecast) -> Void) {
-        print(#function)
-        AF.request(url, method: .get, parameters: parameter).responseDecodable(of: CurrentWeatherForecast.self) { response in
-//             print(response.error!)
-            guard let value = response.value else { return }
-            completion(value)
-        }
-    }
+//    func getWeatherForecast(parameter: LocationInformation, completion: @escaping (CurrentWeatherForecast) -> Void) {
+//        print(#function)
+//        AF.request(url, method: .get, parameters: parameter).responseDecodable(of: CurrentWeatherForecast.self) { response in
+////             print(response.error!)
+//            guard let value = response.value else { return }
+//            completion(value)
+//        }
+//    }
     
     
 }

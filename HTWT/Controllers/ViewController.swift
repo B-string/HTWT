@@ -15,7 +15,7 @@ final class ViewController: UIViewController {
     private var locationManager = CLLocationManager()
     private var locationService = LocationService()
     
-    var cWeatherForecast: CurrentWeatherForecast?
+//    var cWeatherForecast: CurrentWeatherForecast?
     
     // MARK: - UITableView
     @IBOutlet weak var tableView: UITableView!
@@ -138,9 +138,9 @@ extension ViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "CurrentWeatherCell", for: indexPath) as? CurrentWeatherCell else { return UITableViewCell() }
             cell.selectionStyle = .none
             
-            if let cWeatherForecast = self.cWeatherForecast {
-                cell.forecastData = cWeatherForecast
-            }
+//            if let cWeatherForecast = self.cWeatherForecast {
+//                cell.forecastData = cWeatherForecast
+//            }
             
             return cell
         case 1:
@@ -197,12 +197,12 @@ extension ViewController: CLLocationManagerDelegate {
             locationService.transformToGrid(mode: 0)
             print("xlat: \(locationService.getGridXY("X")), ylon: \(locationService.getGridXY("Y"))")
             
-            weatherManager.getWeatherForecast(
-                parameter: LocationInformation(lat: coordinate.latitude, lon: coordinate.longitude)) { [weak self] data in
-                    print(data)
-                    self?.cWeatherForecast = data
-                    self?.tableView.reloadData()
-            }
+//            weatherManager.getWeatherForecast(
+//                parameter: LocationInformation(lat: coordinate.latitude, lon: coordinate.longitude)) { [weak self] data in
+//                    print(data)
+//                    self?.cWeatherForecast = data
+//                    self?.tableView.reloadData()
+//            }
         }
         
         // startUpdatingLocation()을 사용하여 사용자 위치를 가져왔다면
