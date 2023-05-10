@@ -15,6 +15,7 @@ final class ViewController: UIViewController {
     private var locationManager = CLLocationManager()
     private var locationService = LocationService()
     
+    var shortTermForecast: ShortTermForecast?
 //    var cWeatherForecast: CurrentWeatherForecast?
     
     // MARK: - UITableView
@@ -191,18 +192,26 @@ extension ViewController: CLLocationManagerDelegate {
         // 위치 정보를 배열로 입력받는데, 마지막 index값이 가장 정확하다고 한다.
         if let coordinate = locations.last?.coordinate {
             // ⭐️ 사용자 위치 정보 사용
-            print("lat : \(coordinate.latitude), long: \(coordinate.longitude)")
-
             locationService.setLocationInformation(lat: coordinate.latitude, lon: coordinate.longitude)
             locationService.transformToGrid(mode: 0)
-            print("xlat: \(locationService.getGridXY("X")), ylon: \(locationService.getGridXY("Y"))")
             
-//            weatherManager.getWeatherForecast(
-//                parameter: LocationInformation(lat: coordinate.latitude, lon: coordinate.longitude)) { [weak self] data in
-//                    print(data)
-//                    self?.cWeatherForecast = data
+            let parameters = [
+                "nx": locationService.getGridXY("x"),
+                "ny": locationService.getGridXY("y")
+            ]
+            
+            weatherManager.getShortTermForecast(
+                parameters: parameters) { [weak self] data in
+                    print("test")
+                    
+                    for i in data.forecasts {
+                        
+                        self?.shortTermForecast = i
+                        guard let shortTermForecast = self?.shortTermForecast else { return }
+                        print(shortTermForecast)
+                    }
 //                    self?.tableView.reloadData()
-//            }
+            }
         }
         
         // startUpdatingLocation()을 사용하여 사용자 위치를 가져왔다면

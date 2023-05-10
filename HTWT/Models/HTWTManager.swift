@@ -11,17 +11,20 @@ import Alamofire
 class HTWTManager {
     
     static let shared = HTWTManager()
+    private let server = Server()
     
-//    private let url = "https://api.openweathermap.org/data/2.5/weather"
-    
-//    func getWeatherForecast(parameter: LocationInformation, completion: @escaping (CurrentWeatherForecast) -> Void) {
-//        print(#function)
-//        AF.request(url, method: .get, parameters: parameter).responseDecodable(of: CurrentWeatherForecast.self) { response in
-////             print(response.error!)
-//            guard let value = response.value else { return }
-//            completion(value)
-//        }
-//    }
+    func getShortTermForecast(parameters: [String: Int], completion: @escaping (ShortTermForecasts) -> Void) {
+        
+        print(parameters)
+        AF.request(server.url + server.page[0], method: .get, parameters: parameters).responseDecodable(of: ShortTermForecasts.self) { response in
+//            response.request?.url
+            guard let statusCode = response.request?.url else { return }
+            print(statusCode)
+            guard let value = response.value else { return }
+            print(value)
+            completion(value)
+        }
+    }
     
     
 }

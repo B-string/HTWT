@@ -34,8 +34,8 @@ class LocationService: NSObject {
         return locationInformation[point] ?? 0.0
     }
     
-    func getGridXY(_ point: String) -> Double {
-        return gridXY[point] ?? 0.0
+    func getGridXY(_ point: String) -> Int {
+        return Int(gridXY[point.uppercased()] ?? 0.0)
     }
     
     // MARK: - 위치 정보를 가져올 수 있는 권한을 확인
