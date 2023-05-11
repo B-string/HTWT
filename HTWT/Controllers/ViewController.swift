@@ -25,7 +25,7 @@ final class ViewController: UIViewController {
         super.viewDidLoad()
         title = "Weather"
         setupTableView()
-        setupToolBar()
+//        setupToolBar()
 //        setupNaviBar()
         locationManager.delegate = self
     }
@@ -208,7 +208,17 @@ extension ViewController: CLLocationManagerDelegate {
                         
                         self?.shortTermForecast = i
                         guard let shortTermForecast = self?.shortTermForecast else { return }
-                        print(shortTermForecast)
+                        print(shortTermForecast.fcstDatetime)
+//                        let dateFormatter = DateFormatter()
+//                        dateFormatter.calendar = Calendar(identifier: .iso8601)
+//                        dateFormatter.locale = Locale(identifier: "ko_KR")
+//                        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+//                        let string = shortTermForecast.fcstDatetime
+//                        if let date = dateFormatter.date(from: string) {
+//                            print(type(of: date))   // "2015-06-30 17:30:36 +0000"
+//
+//                        }
+                        
                     }
 //                    self?.tableView.reloadData()
             }

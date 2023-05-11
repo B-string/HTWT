@@ -18,7 +18,7 @@ class HTWTManager {
         print(parameters)
         AF.request(server.url + server.page[0], method: .get, parameters: parameters).responseDecodable(of: ShortTermForecasts.self) { response in
 //            response.request?.url
-            guard let statusCode = response.request?.url else { return }
+            guard let statusCode = response.response?.statusCode else { return }
             print(statusCode)
             guard let value = response.value else { return }
             print(value)
