@@ -14,9 +14,11 @@ class HTWTManager {
     private let server = Server()
     
     func getShortTermForecast(parameters: [String: Int], completion: @escaping (ShortTermForecasts) -> Void) {
-        
         print(parameters)
-        AF.request(server.url + server.page[0], method: .get, parameters: parameters).responseDecodable(of: ShortTermForecasts.self) { response in
+        
+        let requestUrl = server.url + server.page[0]
+
+        AF.request(requestUrl, method: .get, parameters: parameters).responseDecodable(of: ShortTermForecasts.self) { response in
 //            response.request?.url
             guard let statusCode = response.response?.statusCode else { return }
             print(statusCode)
@@ -26,5 +28,36 @@ class HTWTManager {
         }
     }
     
+    func getMidTermTemperature(parameters: String, completion: @escaping (MidTermTemperature) -> Void) {
+        print(parameters)
+        
+        let requestUrl = server.url + server.page[1]
+        
+        AF.request(requestUrl, method: .get, parameters: parameters).responseDecodable(of: MidTermTemperature.self) { response in
+            guard let statusCode = response.response?.statusCode else { return }
+            print(statusCode)
+            guard let value = response.value else { return }
+            print(value)
+            completion(value)
+        }
+    }
     
+    func getMidTermOutlook(parameters: Int, completion: @escaping (MidtermOutlook) -> Void) {
+        print(parameters)
+        
+        let requestUrl = server.url + server.page[2]
+        
+        AF.request(requestUrl, method: .get, parameters: parameters).responseDecodable(of: MidtermOutlook.self) { response in
+            
+            guard let url = response.request?.url else { return }
+            print(url)
+            guard let statusCode = response.response?.statusCode else { return }
+            print(statusCode)
+            guard let value = response.value else { return }
+            print(value)
+            completion(value)
+        }
+    }
 }
+
+

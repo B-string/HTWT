@@ -199,29 +199,31 @@ extension ViewController: CLLocationManagerDelegate {
                 "nx": locationService.getGridXY("x"),
                 "ny": locationService.getGridXY("y")
             ]
-            
-            weatherManager.getShortTermForecast(
-                parameters: parameters) { [weak self] data in
-                    print("test")
-                    
-                    for i in data.forecasts {
-                        
-                        self?.shortTermForecast = i
-                        guard let shortTermForecast = self?.shortTermForecast else { return }
-                        print(shortTermForecast.fcstDatetime)
-//                        let dateFormatter = DateFormatter()
-//                        dateFormatter.calendar = Calendar(identifier: .iso8601)
-//                        dateFormatter.locale = Locale(identifier: "ko_KR")
-//                        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-//                        let string = shortTermForecast.fcstDatetime
-//                        if let date = dateFormatter.date(from: string) {
-//                            print(type(of: date))   // "2015-06-30 17:30:36 +0000"
-//
-//                        }
-                        
-                    }
-//                    self?.tableView.reloadData()
+            weatherManager.getMidTermOutlook(parameters: 109) { [weak self] data in
+                print(data)
             }
+//            weatherManager.getShortTermForecast(
+//                parameters: parameters) { [weak self] data in
+//                    print("test")
+//
+//                    for i in data.forecasts {
+//
+//                        self?.shortTermForecast = i
+//                        guard let shortTermForecast = self?.shortTermForecast else { return }
+//                        print(shortTermForecast.fcstDatetime)
+////                        let dateFormatter = DateFormatter()
+////                        dateFormatter.calendar = Calendar(identifier: .iso8601)
+////                        dateFormatter.locale = Locale(identifier: "ko_KR")
+////                        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+////                        let string = shortTermForecast.fcstDatetime
+////                        if let date = dateFormatter.date(from: string) {
+////                            print(type(of: date))   // "2015-06-30 17:30:36 +0000"
+////
+////                        }
+//
+//                    }
+////                    self?.tableView.reloadData()
+//            }
         }
         
         // startUpdatingLocation()을 사용하여 사용자 위치를 가져왔다면
