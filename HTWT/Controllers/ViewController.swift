@@ -199,9 +199,7 @@ extension ViewController: CLLocationManagerDelegate {
                 "nx": locationService.getGridXY("x"),
                 "ny": locationService.getGridXY("y")
             ]
-            weatherManager.getMidTermOutlook(parameters: 109) { [weak self] data in
-                print(data)
-            }
+            
 //            weatherManager.getShortTermForecast(
 //                parameters: parameters) { [weak self] data in
 //                    print("test")
