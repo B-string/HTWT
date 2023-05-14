@@ -200,6 +200,10 @@ extension ViewController: CLLocationManagerDelegate {
                 "ny": locationService.getGridXY("y")
             ]
             
+            weatherManager.getMidTermOutlook(parameters: ["stn_id": 109]) { data in
+                print(data.wfSv)
+            }
+            
 //            weatherManager.getShortTermForecast(
 //                parameters: parameters) { [weak self] data in
 //                    print("test")
@@ -209,18 +213,18 @@ extension ViewController: CLLocationManagerDelegate {
 //                        self?.shortTermForecast = i
 //                        guard let shortTermForecast = self?.shortTermForecast else { return }
 //                        print(shortTermForecast.fcstDatetime)
-////                        let dateFormatter = DateFormatter()
-////                        dateFormatter.calendar = Calendar(identifier: .iso8601)
-////                        dateFormatter.locale = Locale(identifier: "ko_KR")
-////                        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-////                        let string = shortTermForecast.fcstDatetime
-////                        if let date = dateFormatter.date(from: string) {
-////                            print(type(of: date))   // "2015-06-30 17:30:36 +0000"
-////
-////                        }
+//                        let dateFormatter = DateFormatter()
+//                        dateFormatter.calendar = Calendar(identifier: .iso8601)
+//                        dateFormatter.locale = Locale(identifier: "ko_KR")
+//                        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+//                        let string = shortTermForecast.fcstDatetime
+//                        if let date = dateFormatter.date(from: string) {
+//                            print(type(of: date))   // "2015-06-30 17:30:36 +0000"
+//
+//                        }
 //
 //                    }
-////                    self?.tableView.reloadData()
+//                    self?.tableView.reloadData()
 //            }
         }
         

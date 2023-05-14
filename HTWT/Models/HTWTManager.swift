@@ -28,7 +28,7 @@ class HTWTManager {
         }
     }
     
-    func getMidTermTemperature(parameters: String, completion: @escaping (MidTermTemperature) -> Void) {
+    func getMidTermTemperature(parameters: [String: String], completion: @escaping (MidTermTemperature) -> Void) {
         print(parameters)
         
         let requestUrl = server.url + server.page[1]
@@ -42,13 +42,14 @@ class HTWTManager {
         }
     }
     
-    func getMidTermOutlook(parameters: Int, completion: @escaping (MidtermOutlook) -> Void) {
+    func getMidTermOutlook(parameters: [String: Int], completion: @escaping (MidTermOutlook) -> Void) {
         print(parameters)
         
         let requestUrl = server.url + server.page[2]
         
-        AF.request(requestUrl, method: .get, parameters: parameters).responseDecodable(of: MidtermOutlook.self) { response in
-            
+        print(requestUrl)
+        AF.request(requestUrl, method: .get, parameters: parameters).responseDecodable(of: MidTermOutlook.self) { response in
+            print(response)
             guard let url = response.request?.url else { return }
             print(url)
             guard let statusCode = response.response?.statusCode else { return }
