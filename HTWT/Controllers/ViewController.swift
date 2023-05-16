@@ -36,35 +36,34 @@ final class ViewController: UIViewController {
         tableView.delegate = self
 //        tableView.separatorStyle = .none
 //        tableView.rowHeight = UITableView.automaticDimension
-        tableView.register(UINib(nibName: "CurrentWeatherCell", bundle: nil),
-                           forCellReuseIdentifier: "CurrentWeatherCell")
+        tableView.register(CurrentForecastCell.self, forCellReuseIdentifier: "CurrentForecastCell")
         tableView.register(FourDaysWeatherForecastCell.self, forCellReuseIdentifier: "FourDaysWeatherForecastCell")
         
         tableView.register(TenDaysForecastCell.self, forCellReuseIdentifier: "TenDaysForecastCell")
     }
     
-    func setupToolBar() {
-        let space = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: self, action: nil)
-        space.width = (view.bounds.width - 10) / 3
-        
-        let edgeSpace = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: self, action: nil)
-        edgeSpace.width = 5
-        
-        let changeInfoImage = UIImage(systemName: "thermometer.medium")
-        let changeInfoItem = UIBarButtonItem(image: changeInfoImage, style: .plain, target: self, action: nil) // 날씨 정보 변경
-        
-        let weatherAlarmImage = UIImage(systemName: "alarm.waves.left.and.right")
-        let weatherAlarmItem = UIBarButtonItem(image: weatherAlarmImage, style: .plain, target: self, action: nil) // 특정 날씨 알림
-        
-        let addLocationImage = UIImage(systemName: "map")
-        let addLocationItem = UIBarButtonItem(image: addLocationImage, style: .plain, target: self, action: nil)
-        
-        toolbarItems = [edgeSpace, changeInfoItem, space, weatherAlarmItem, space, addLocationItem, edgeSpace]
-//        guard let items = toolbarItems else {
-//            return
-//        }
-        
-    }
+//    func setupToolBar() {
+//        let space = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: self, action: nil)
+//        space.width = (view.bounds.width - 10) / 3
+//
+//        let edgeSpace = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: self, action: nil)
+//        edgeSpace.width = 5
+//
+//        let changeInfoImage = UIImage(systemName: "thermometer.medium")
+//        let changeInfoItem = UIBarButtonItem(image: changeInfoImage, style: .plain, target: self, action: nil) // 날씨 정보 변경
+//
+//        let weatherAlarmImage = UIImage(systemName: "alarm.waves.left.and.right")
+//        let weatherAlarmItem = UIBarButtonItem(image: weatherAlarmImage, style: .plain, target: self, action: nil) // 특정 날씨 알림
+//
+//        let addLocationImage = UIImage(systemName: "map")
+//        let addLocationItem = UIBarButtonItem(image: addLocationImage, style: .plain, target: self, action: nil)
+//
+//        toolbarItems = [edgeSpace, changeInfoItem, space, weatherAlarmItem, space, addLocationItem, edgeSpace]
+////        guard let items = toolbarItems else {
+////            return
+////        }
+//
+//    }
     
     
   
@@ -135,8 +134,8 @@ extension ViewController: UITableViewDataSource {
         print(#function)
         switch indexPath.row {
         case 0:
-            print("CurrentWeatherCell")
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "CurrentWeatherCell", for: indexPath) as? CurrentWeatherCell else { return UITableViewCell() }
+            print("CurrentForecastCell")
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "CurrentForecastCell", for: indexPath) as? CurrentForecastCell else { return UITableViewCell() }
             cell.selectionStyle = .none
             
 //            if let cWeatherForecast = self.cWeatherForecast {
@@ -173,9 +172,10 @@ extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
         case 0:
-            return 355
+            let height = Int(self.tableView.bounds.height / 2)
+            return CGFloat(height)
         case 1:
-            return 120
+            return self.tableView.bounds.height / 6
         case 2:
             return 400
         default:
