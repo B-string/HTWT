@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class FourDaysWeatherForecastCell: UITableViewCell {
+class ToDayWeatherForecastCell: UITableViewCell {
     
     let collectionView: UICollectionView = {
         let flowLayout: UICollectionViewFlowLayout = {
@@ -30,7 +30,7 @@ class FourDaysWeatherForecastCell: UITableViewCell {
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: .default, reuseIdentifier: "FourDaysWeatherForecastCell")
+        super.init(style: .default, reuseIdentifier: "ToDayWeatherForecastCell")
         
         setupUI()
     }
@@ -56,13 +56,13 @@ class FourDaysWeatherForecastCell: UITableViewCell {
     func setupCollectionView() {
         collectionView.dataSource = self
         
-        collectionView.register(UINib(nibName: "FDWeatherForecastCell", bundle: nil), forCellWithReuseIdentifier: "FDWeatherForecastCell")
+        collectionView.register(HourWeatherForecastCell.self, forCellWithReuseIdentifier: "HourWeatherForecastCell")
         
     }
     
 }
 
-extension FourDaysWeatherForecastCell: UICollectionViewDataSource {
+extension ToDayWeatherForecastCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
     }
@@ -70,7 +70,7 @@ extension FourDaysWeatherForecastCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FDWeatherForecastCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HourWeatherForecastCell", for: indexPath)
         
         return cell
     }

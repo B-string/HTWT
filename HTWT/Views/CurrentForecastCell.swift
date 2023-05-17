@@ -78,9 +78,9 @@ class CurrentForecastCell: UITableViewCell {
         super.layoutSubviews()
         print("height: \(self.contentView.bounds.height)")
         
-        let cellHeightFifth = Int(self.contentView.bounds.height / 6)
+        let cellHeight = Int(self.contentView.bounds.height / 6)
         
-        setConstraints(cellHeightFifth: cellHeightFifth)
+        setConstraints(cellHeight: cellHeight)
     }
     
     required init?(coder: NSCoder) {
@@ -112,10 +112,10 @@ class CurrentForecastCell: UITableViewCell {
         }
     }
     
-    func setConstraints(cellHeightFifth: Int) {
+    func setConstraints(cellHeight: Int) {
         areaLabel.snp.makeConstraints { make in
             make.top.equalTo(currentForecastStackView).offset(0)
-            make.height.equalTo(cellHeightFifth)
+            make.height.equalTo(cellHeight)
             make.bottom.equalTo(weatherImageView.snp.top).offset(0)
         }
         
@@ -125,13 +125,13 @@ class CurrentForecastCell: UITableViewCell {
         
         temperatureLabel.snp.makeConstraints { make in
             make.top.equalTo(weatherImageView.snp.bottom).offset(0)
-            make.height.equalTo(cellHeightFifth)
+            make.height.equalTo(cellHeight)
             make.bottom.equalTo(highAndLowStackView.snp.top).offset(0)
         }
 
         highAndLowStackView.snp.makeConstraints { make in
             make.top.equalTo(temperatureLabel.snp.bottom).offset(0)
-            make.height.equalTo(cellHeightFifth)
+            make.height.equalTo(cellHeight)
             make.bottom.equalTo(currentForecastStackView).offset(0)
         }
     }

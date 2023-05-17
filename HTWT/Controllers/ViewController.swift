@@ -37,7 +37,7 @@ final class ViewController: UIViewController {
 //        tableView.separatorStyle = .none
 //        tableView.rowHeight = UITableView.automaticDimension
         tableView.register(CurrentForecastCell.self, forCellReuseIdentifier: "CurrentForecastCell")
-        tableView.register(FourDaysWeatherForecastCell.self, forCellReuseIdentifier: "FourDaysWeatherForecastCell")
+        tableView.register(ToDayWeatherForecastCell.self, forCellReuseIdentifier: "ToDayWeatherForecastCell")
         
         tableView.register(TenDaysForecastCell.self, forCellReuseIdentifier: "TenDaysForecastCell")
     }
@@ -144,8 +144,8 @@ extension ViewController: UITableViewDataSource {
             
             return cell
         case 1:
-            print("FourDaysWeatherForecastCell")
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "FourDaysWeatherForecastCell", for: indexPath) as? FourDaysWeatherForecastCell else { return UITableViewCell() }
+            print("ToDayWeatherForecastCell")
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ToDayWeatherForecastCell", for: indexPath) as? ToDayWeatherForecastCell else { return UITableViewCell() }
             cell.selectionStyle = .none
             
             return cell
