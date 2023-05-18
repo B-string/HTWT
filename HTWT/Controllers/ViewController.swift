@@ -15,58 +15,12 @@ final class ViewController: UIViewController {
     private var locationManager = CLLocationManager()
     private var locationService = LocationService()
     
-    var shortTermForecast: ShortTermForecast?
-//    var cWeatherForecast: CurrentWeatherForecast?
-    
-    // MARK: - UITableView
-    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Weather"
-        setupTableView()
-//        setupToolBar()
-//        setupNaviBar()
+        
         locationManager.delegate = self
     }
-
-    // MARK: - setup
-    func setupTableView() {
-        tableView.dataSource = self
-        tableView.delegate = self
-//        tableView.separatorStyle = .none
-//        tableView.rowHeight = UITableView.automaticDimension
-        tableView.register(CurrentForecastCell.self, forCellReuseIdentifier: "CurrentForecastCell")
-        tableView.register(ToDayWeatherForecastCell.self, forCellReuseIdentifier: "ToDayWeatherForecastCell")
-        
-        tableView.register(TenDaysForecastCell.self, forCellReuseIdentifier: "TenDaysForecastCell")
-    }
-    
-//    func setupToolBar() {
-//        let space = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: self, action: nil)
-//        space.width = (view.bounds.width - 10) / 3
-//
-//        let edgeSpace = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: self, action: nil)
-//        edgeSpace.width = 5
-//
-//        let changeInfoImage = UIImage(systemName: "thermometer.medium")
-//        let changeInfoItem = UIBarButtonItem(image: changeInfoImage, style: .plain, target: self, action: nil) // 날씨 정보 변경
-//
-//        let weatherAlarmImage = UIImage(systemName: "alarm.waves.left.and.right")
-//        let weatherAlarmItem = UIBarButtonItem(image: weatherAlarmImage, style: .plain, target: self, action: nil) // 특정 날씨 알림
-//
-//        let addLocationImage = UIImage(systemName: "map")
-//        let addLocationItem = UIBarButtonItem(image: addLocationImage, style: .plain, target: self, action: nil)
-//
-//        toolbarItems = [edgeSpace, changeInfoItem, space, weatherAlarmItem, space, addLocationItem, edgeSpace]
-////        guard let items = toolbarItems else {
-////            return
-////        }
-//
-//    }
-    
-    
-  
     
     // MARK: - 위치 정보를 가져올 수 있는 권한을 확인
     func checkUserDeviceLocationServiceAuthorization(completion: @escaping () -> Void) {
@@ -122,66 +76,6 @@ final class ViewController: UIViewController {
     
     
     
-}
-
-// MARK: - UITableViewDataSource
-extension ViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print(#function)
-        switch indexPath.row {
-        case 0:
-            print("CurrentForecastCell")
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "CurrentForecastCell", for: indexPath) as? CurrentForecastCell else { return UITableViewCell() }
-            cell.selectionStyle = .none
-            
-//            if let cWeatherForecast = self.cWeatherForecast {
-//                cell.forecastData = cWeatherForecast
-//            }
-            
-            return cell
-        case 1:
-            print("ToDayWeatherForecastCell")
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ToDayWeatherForecastCell", for: indexPath) as? ToDayWeatherForecastCell else { return UITableViewCell() }
-            cell.selectionStyle = .none
-            
-            return cell
-            
-        case 2:
-            print("TenDaysForecastCell")
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TenDaysForecastCell", for: indexPath) as? TenDaysForecastCell else { return UITableViewCell() }
-            cell.selectionStyle = .none
-            
-            return cell
-        default:
-            let cell = UITableViewCell()
-            return cell
-            
-        }
-    }
-    
-    
-    
-}
-
-extension ViewController: UITableViewDelegate {
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.row {
-        case 0:
-            let height = Int(self.tableView.bounds.height / 2)
-            return CGFloat(height)
-        case 1:
-            return self.tableView.bounds.height / 6
-        case 2:
-            return 400
-        default:
-            return 0
-        }
-    }
 }
 
 // MARK: - CLLocationManagerDelegate
