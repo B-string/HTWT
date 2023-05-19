@@ -54,6 +54,12 @@ class MainView: UIView {
     }
     */
     
-    
+    func setupUI() {
+        self.addSubview(areaLabel)
+        self.addSubview(weatherLabel)
+        self.addSubview(temperatureLabel)
+        self.addSubview(weatherTreeImageView)
+        
+    }
 
 }
