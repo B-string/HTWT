@@ -15,6 +15,9 @@ final class ViewController: UIViewController {
     private var locationManager = CLLocationManager()
     private var locationService = LocationService()
     
+    override func loadView() {
+        view = MainView()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
