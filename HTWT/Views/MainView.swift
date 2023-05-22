@@ -11,21 +11,21 @@ class MainView: UIView {
 
     private let areaLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .red
+        label.backgroundColor = .clear
         label.text = "AREA"
         return label
     }()
     
     private let weatherLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .yellow
+        label.backgroundColor = .clear
         label.text = "WEATHER"
         return label
     }()
     
     private let temperatureLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .yellow
+        label.backgroundColor = .clear
         label.text = "TEMPERATURE"
         return label
     }()
@@ -44,7 +44,7 @@ class MainView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor(red: 72, green: 202, blue: 228, alpha: 1)
+        self.backgroundColor = UIColor(red: 0.47, green: 0.42, blue: 0.82, alpha: 1.00)
         setupUI()
     }
     
@@ -98,13 +98,20 @@ class MainView: UIView {
     }
     
     func setupOutterStackView() {
-        infoOutterStackView.backgroundColor = .darkGray
+        infoOutterStackView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1.0)
         infoOutterStackView.axis = .horizontal
         infoOutterStackView.spacing = infoOutterSVSpacing
         infoOutterStackView.alignment = .center
         infoOutterStackView.distribution = .fillEqually
         infoOutterStackView.layer.cornerRadius = 10
         infoOutterStackView.clipsToBounds = true
+        
+        infoOutterStackView.layer.shadowColor = UIColor.black.cgColor
+        infoOutterStackView.layer.masksToBounds = false
+        infoOutterStackView.layer.shadowOffset = CGSize(width: 0, height: 4)
+        infoOutterStackView.layer.shadowRadius = 5
+        infoOutterStackView.layer.shadowOpacity = 0.3
+        
     }
     
     
