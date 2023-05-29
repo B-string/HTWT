@@ -13,6 +13,9 @@ class MainView: UIView {
         let label = UILabel()
         label.backgroundColor = .clear
         label.text = "AREA"
+        label.textColor = .white
+        label.textAlignment = .center
+        
         return label
     }()
     
@@ -20,6 +23,8 @@ class MainView: UIView {
         let label = UILabel()
         label.backgroundColor = .clear
         label.text = "WEATHER"
+        label.textColor = .white
+        label.textAlignment = .center
         return label
     }()
     
@@ -27,24 +32,48 @@ class MainView: UIView {
         let label = UILabel()
         label.backgroundColor = .clear
         label.text = "TEMPERATURE"
+        label.textColor = .white
+        label.textAlignment = .center
+        return label
+    }()
+    
+    private let highTemLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = .clear
+        label.text = "HIGH"
+        label.textColor = .white
+        label.textAlignment = .center
+        return label
+    }()
+    
+    private let lowTemLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = .clear
+        label.text = "LOW"
+        label.textColor = .white
+        label.textAlignment = .center
         return label
     }()
     
     private let weatherTreeImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .orange
+        imageView.backgroundColor = .clear
+        imageView
         
         return imageView
     }()
     
-    private let infoInnerStackView = UIStackView()
+    private let highAndLowStackView = UIStackView()
+    private let infoInnerFirstStackView = UIStackView()
+    private let infoInnerSecondStackView = UIStackView()
     private let infoInnerSVSpacing: CGFloat = 10
+    
     private let infoOutterStackView = UIStackView()
     private let infoOutterSVSpacing: CGFloat = 30
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor(red: 0.47, green: 0.42, blue: 0.82, alpha: 1.00)
+        self.backgroundColor = UIColor(red: 0.635, green: 0.824, blue: 1, alpha: 1.00)
         setupUI()
     }
     
@@ -56,8 +85,8 @@ class MainView: UIView {
         super.layoutSubviews()
         
         infoOutterSTConstraints()
-        areaLabelConstraints()
-        infoInnerSTConstraints()
+        infoInnerSTConstraints(st: infoInnerFirstStackView)
+        infoInnerSTConstraints(st: infoInnerSecondStackView)
         weatherTreeIVConstraints()
         
     }
@@ -75,30 +104,47 @@ class MainView: UIView {
     func setupUI() {
         print(#function)
         self.addSubview(infoOutterStackView)
-        infoOutterStackView.addArrangedSubview(areaLabel)
-        infoOutterStackView.addArrangedSubview(infoInnerStackView)
+        infoOutterStackView.addArrangedSubview(infoInnerFirstStackView)
+        infoOutterStackView.addArrangedSubview(infoInnerSecondStackView)
         
-        infoInnerStackView.addArrangedSubview(weatherLabel)
-        infoInnerStackView.addArrangedSubview(temperatureLabel)
+        infoInnerFirstStackView.addArrangedSubview(areaLabel)
+        infoInnerFirstStackView.addArrangedSubview(weatherLabel)
+        
+        infoInnerSecondStackView.addArrangedSubview(temperatureLabel)
+        infoInnerSecondStackView.addArrangedSubview(highAndLowStackView)
+        
+        highAndLowStackView.addArrangedSubview(highTemLabel)
+        highAndLowStackView.addArrangedSubview(lowTemLabel)
         
         self.addSubview(weatherTreeImageView)
         
         setupOutterStackView()
-        setupInnerStackView()
+        setupInnerStackView(st: infoInnerFirstStackView)
+        setupInnerStackView(st: infoInnerSecondStackView)
+        setupHighAndLowStackView()
+    
     }
     
-    func setupInnerStackView() {
-        infoInnerStackView.backgroundColor = .gray
-        infoInnerStackView.axis = .vertical
-        infoInnerStackView.spacing = infoInnerSVSpacing
-        infoInnerStackView.alignment = .fill
-        infoInnerStackView.distribution = .fillEqually
-        infoInnerStackView.layer.cornerRadius = 10
-        infoInnerStackView.clipsToBounds = true
+    func setupHighAndLowStackView() {
+        highAndLowStackView.axis = .horizontal
+        highAndLowStackView.spacing = 3
+        highAndLowStackView.alignment = .fill
+        highAndLowStackView.distribution = .fillEqually
+    }
+    
+    func setupInnerStackView(st: UIStackView) {
+        st.backgroundColor = .clear
+        st.axis = .vertical
+        st.spacing = infoInnerSVSpacing
+        st.alignment = .fill
+        st.distribution = .fillEqually
+        st.layer.cornerRadius = 10
+        st.clipsToBounds = true
     }
     
     func setupOutterStackView() {
-        infoOutterStackView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1.0)
+//        infoOutterStackView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+        infoOutterStackView.backgroundColor = UIColor(red: 0.635, green: 0.824, blue: 1, alpha: 0.5)
         infoOutterStackView.axis = .horizontal
         infoOutterStackView.spacing = infoOutterSVSpacing
         infoOutterStackView.alignment = .center
@@ -106,9 +152,12 @@ class MainView: UIView {
         infoOutterStackView.layer.cornerRadius = 10
         infoOutterStackView.clipsToBounds = true
         
+//        infoOutterStackView.layer.borderColor = UIColor.clear.cgColor
+        infoOutterStackView.layer.borderColor = UIColor(red: 0.635, green: 0.824, blue: 1, alpha: 1).cgColor
+        infoOutterStackView.layer.borderWidth = 1
         infoOutterStackView.layer.shadowColor = UIColor.black.cgColor
         infoOutterStackView.layer.masksToBounds = false
-        infoOutterStackView.layer.shadowOffset = CGSize(width: 0, height: 4)
+        infoOutterStackView.layer.shadowOffset = CGSize(width: 0, height: 0)
         infoOutterStackView.layer.shadowRadius = 5
         infoOutterStackView.layer.shadowOpacity = 0.3
         
@@ -126,17 +175,8 @@ class MainView: UIView {
         layoutIfNeeded()
     }
     
-    func areaLabelConstraints() {
-        areaLabel.snp.makeConstraints { make in
-            make.leading.equalTo(infoOutterStackView.snp.leading).inset(0)
-            make.top.equalTo(infoOutterStackView.snp.top).inset(30)
-            make.bottom.equalTo(infoOutterStackView.snp.bottom).inset(30)
-            make.height.equalTo(infoOutterStackView.bounds.height / 2)
-        }
-    }
-    
-    func infoInnerSTConstraints() {
-        infoInnerStackView.snp.makeConstraints { make in
+    func infoInnerSTConstraints(st: UIStackView) {
+        st.snp.makeConstraints { make in
             make.top.equalTo(infoOutterStackView.snp.top).inset(0)
             make.bottom.equalTo(infoOutterStackView.snp.bottom).inset(0)
         }
