@@ -92,6 +92,11 @@ extension ViewController: CLLocationManagerDelegate {
             locationService.setLocationInformation(lat: coordinate.latitude, lon: coordinate.longitude)
             locationService.transformToGrid(mode: 0)
             
+            // 위치 정보를 기반으로 데이터 가져오기
+            // 1. 단기 예보
+            
+            
+            
             let parameters = [
                 "nx": locationService.getGridXY("x"),
                 "ny": locationService.getGridXY("y")

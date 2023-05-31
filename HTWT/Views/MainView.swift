@@ -74,6 +74,7 @@ class MainView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor(red: 0.635, green: 0.824, blue: 1, alpha: 1.00)
+        
         setupUI()
     }
     
@@ -143,8 +144,10 @@ class MainView: UIView {
     }
     
     func setupOutterStackView() {
-//        infoOutterStackView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-        infoOutterStackView.backgroundColor = UIColor(red: 0.635, green: 0.824, blue: 1, alpha: 0.5)
+        infoOutterStackView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.3)
+//        infoOutterStackView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
+//        infoOutterStackView.backgroundColor = UIColor(red: 0.635, green: 0.824, blue: 1, alpha: 0.50)
+//        infoOutterStackView.backgroundColor = .clear
         infoOutterStackView.axis = .horizontal
         infoOutterStackView.spacing = infoOutterSVSpacing
         infoOutterStackView.alignment = .center
@@ -153,13 +156,14 @@ class MainView: UIView {
         infoOutterStackView.clipsToBounds = true
         
 //        infoOutterStackView.layer.borderColor = UIColor.clear.cgColor
-        infoOutterStackView.layer.borderColor = UIColor(red: 0.635, green: 0.824, blue: 1, alpha: 1).cgColor
+//        infoOutterStackView.layer.borderColor = UIColor(red: 0.635, green: 0.824, blue: 1, alpha: 1).cgColor
+        infoOutterStackView.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.3).cgColor
         infoOutterStackView.layer.borderWidth = 1
         infoOutterStackView.layer.shadowColor = UIColor.black.cgColor
         infoOutterStackView.layer.masksToBounds = false
-        infoOutterStackView.layer.shadowOffset = CGSize(width: 0, height: 0)
-        infoOutterStackView.layer.shadowRadius = 5
-        infoOutterStackView.layer.shadowOpacity = 0.3
+        infoOutterStackView.layer.shadowOffset = CGSize(width: 5, height: 5)
+        infoOutterStackView.layer.shadowRadius = 3
+        infoOutterStackView.layer.shadowOpacity = 0.5
         
     }
     

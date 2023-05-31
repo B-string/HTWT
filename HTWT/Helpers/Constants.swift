@@ -12,3 +12,6 @@ struct Server {
     let url = "http://3.37.74.179:8000/"
     let page = ["getShortTermForecast", "getMidTermTemperature", "getMidTermOutlook"]
 }
+
+
+
